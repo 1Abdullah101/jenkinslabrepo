@@ -7,33 +7,33 @@ pipeline {
     stages{
         stage('Build'){
             steps{
-                sh 'npm install'
+                bat 'npm install'
 
             }
         }
         stage('test'){
             steps{
-                sh 'echo "Test is running"'
+                bat 'echo "Test is running"'
             }
         }
         stage('Docker build'){
             steps{
-                sh 'docker build -t abdullahtareen/jenkins-integration:latest .'   //'abdullahtareen' == dockerhub username
+                bat 'docker build -t abdullahtareen/jenkins-integration:latest .'   //'abdullahtareen' == dockerhub username
             }
         }
         stage('login'){
             steps{
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
         stage('push'){
             steps{
-                sh 'docker push abdullahtareen/jenkins-integration:latest'          //'abdullahtareen' == dockerhub username
+                bat 'docker push abdullahtareen/jenkins-integration:latest'          //'abdullahtareen' == dockerhub username
             }
         }
         stage('deploy'){
             steps{
-                sh 'echo "Deploying the application"'
+                bat 'echo "Deploying the application"'
             }
         }
       
