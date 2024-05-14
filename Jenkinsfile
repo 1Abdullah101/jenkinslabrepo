@@ -61,13 +61,13 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'npm install' // Use 'sh' for shell commands (better practice)
+        bat 'npm install' // Use 'sh' for shell commands (better practice)
       }
     }
 
     stage('Test') {
       steps {
-        sh 'echo "Test is running"'
+        bat 'echo "Test is running"'
       }
     }
 
@@ -101,7 +101,7 @@ pipeline {
     stage('Deploy') { // Consider adding a deploy script or specifying deployment method
       steps {
         // Replace with your actual deployment commands or script call
-        sh 'echo "Deployment in process"'
+        bat 'echo "Deployment in process"'
       }
     }
   }
